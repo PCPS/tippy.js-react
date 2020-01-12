@@ -1,4 +1,4 @@
-import React, {forwardRef, cloneElement, useState} from 'react';
+import React, {forwardRef, cloneElement, useState, Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {createPortal} from 'react-dom';
 import tippy from 'tippy.js';
@@ -106,7 +106,7 @@ export function Tippy({
   useUpdateClassName(component, className, deps);
 
   return (
-    <>
+    <Fragment>
       {cloneElement(children, {
         ref(node) {
           component.ref = node;
@@ -114,7 +114,7 @@ export function Tippy({
         },
       })}
       {mounted && createPortal(content, component.container)}
-    </>
+    </Fragment>
   );
 }
 
